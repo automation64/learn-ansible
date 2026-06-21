@@ -1,0 +1,70 @@
+# Reference: https://docs.ansible.com/projects/ansible/latest/reference_appendices/special_variables.html
+---
+- name: "CORE-SPECIAL-VARS"
+  hosts: "main"
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: "Fact variables"
+      ansible.builtin.debug:
+        msg: "{{ item }} = {{ lookup('vars', item) | default('NOT_SET') }}"
+      loop:
+        - ansible_facts
+        - ansible_local
+
+    - name: "Connection variables"
+      ansible.builtin.debug:
+        msg: "{{ item }} = {{ lookup('vars', item) | default('NOT_SET') }}"
+      loop:
+        - ansible_become_user
+        - ansible_connection
+        - ansible_host
+        - ansible_python_interpreter
+        - ansible_user
+
+    - name: "Magic variables"
+      ansible.builtin.debug:
+        msg: "{{ item }} = {{ lookup('vars', item) | default('NOT_SET') }}"
+      loop:
+        - ansible_check_mode
+        - ansible_collection_name
+        - ansible_config_file
+        - ansible_dependent_role_names
+        - ansible_diff_mode
+        - ansible_forks
+        - ansible_index_var
+        - ansible_inventory_sources
+        - ansible_limit
+        - ansible_loop
+        - ansible_loop_var
+        - ansible_parent_role_names
+        - ansible_parent_role_paths
+        - ansible_play_batch
+        - ansible_play_hosts
+        - ansible_play_hosts_all
+        - ansible_play_name
+        - ansible_play_role_names
+        - ansible_playbook_python
+        - ansible_role_name
+        - ansible_role_names
+        - ansible_run_tags
+        - ansible_search_path
+        - ansible_skip_tags
+        - ansible_verbosity
+        - ansible_version
+        - group_names
+        - groups
+        - hostvars
+        - inventory_dir
+        - inventory_hostname
+        - inventory_hostname_short
+        - inventory_file
+        - omit
+        - play_hosts
+        - playbook_dir
+        - role_name
+        - role_names
+        - role_path
+
+...

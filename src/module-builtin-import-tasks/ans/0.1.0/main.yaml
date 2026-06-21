@@ -1,0 +1,11 @@
+# Reference: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/import_tasks_module.html
+---
+- name: "MODULE-BUILTIN.IMPORT_TASKS"
+  hosts: "main"
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: "Import tasks from file"
+      ansible.builtin.import_tasks: "tasks.yaml"
+...

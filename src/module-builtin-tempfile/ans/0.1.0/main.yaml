@@ -1,0 +1,22 @@
+---
+# Reference: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/tempfile_module.html
+- name: "MODULE-BUILTIN-TEMPFILE"
+  hosts: "main"
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: "Create temporary file"
+      ansible.builtin.tempfile:
+        state: "file"
+        prefix: "learn-ansible"
+        suffix: "builtin-tempfile"
+      register: "tempfile_path"
+
+  post_tasks:
+    - name: "Cleanup test environment"
+      ansible.builtin.file:
+        path: "{{ tempfile_path }}"
+        state: "absent"
+      when: tempfile_path is defined
+...

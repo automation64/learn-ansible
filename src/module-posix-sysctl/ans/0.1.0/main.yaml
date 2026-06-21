@@ -1,0 +1,35 @@
+# Reference: https://docs.ansible.com/projects/ansible/latest/collections/ansible/posix/sysctl_module.html#ansible-collections-ansible-posix-sysctl-module
+---
+- name: "MODULE-POSIX-SYSCTL"
+  hosts: "main"
+  become: false
+  gather_facts: false
+  check_mode: true
+
+  tasks:
+    - name: "Set sysctl parameter. Modify system configuration file. Do not change runtime value."
+      become: true
+      ansible.posix.sysctl:
+        name: "net.ipv4.ip_forward"
+        sysctl_set: false
+        reload: false
+        state: "present"
+        value: "1"
+
+    - name: "Remove sysctl parameter. Modify system configuration file. Do not change runtime value."
+      become: true
+      ansible.posix.sysctl:
+        name: "net.ipv4.ip_forward"
+        sysctl_set: false
+        reload: false
+        state: "absent"
+
+    - name: "Set sysctl parameter. Do not modify. Change runtime value."
+      become: true
+      ansible.posix.sysctl:
+        name: "net.ipv4.ip_forward"
+        sysctl_set: true
+        reload: false
+        state: "present"
+        value: "1"
+...

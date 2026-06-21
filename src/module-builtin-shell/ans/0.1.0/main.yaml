@@ -1,0 +1,17 @@
+# Reference: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/shell_module.html#ansible-collections-ansible-builtin-shell-module
+---
+- name: "MODULE-BUILTIN-SHELL"
+  hosts: "main"
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: "Run shell command"
+      ansible.builtin.shell:
+        cmd: "echo from-builtin-shell"
+
+    - name: "Change directory and run command"
+      ansible.builtin.shell:
+        chdir: "/tmp"
+        cmd: "pwd"
+...

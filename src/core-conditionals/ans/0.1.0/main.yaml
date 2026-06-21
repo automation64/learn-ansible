@@ -1,0 +1,20 @@
+# Reference: https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_conditionals.html
+---
+- name: "CORE-CONDITIONALS"
+  hosts: "main"
+  become: false
+  gather_facts: false
+
+  pre_tasks:
+
+  tasks:
+    - name: "Task when condition is true"
+      when: 1 == 1
+      ansible.builtin.debug:
+        msg: "condition is true"
+
+    - name: "Task when condition is not true"
+      when: 1 != 1
+      ansible.builtin.debug:
+        msg: "condition is not true"
+...
