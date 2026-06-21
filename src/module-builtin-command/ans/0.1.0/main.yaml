@@ -1,0 +1,29 @@
+# Reference: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/command_module.html
+---
+- name: "MODULE-BUILTIN-COMMAND"
+  hosts: "main"
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: "Run command"
+      ansible.builtin.command:
+        cmd: "echo from-builtin-command"
+
+    - name: "Change directory and run command"
+      ansible.builtin.command:
+        chdir: "/tmp"
+        cmd: "pwd"
+
+    - name: "Run shell command passing args"
+      ansible.builtin.command:
+        argv:
+          - "echo"
+          - "using args"
+
+    - name: "Run command passing env-var"
+      environment:
+        TEST_VAR: "from-env-var"
+      ansible.builtin.command:
+        cmd: "echo ${TEST_VAR}"
+...

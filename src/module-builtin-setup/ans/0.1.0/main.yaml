@@ -1,0 +1,31 @@
+# Reference: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/setup_module.html
+---
+- name: "MODULE-BUILTIN-SETUP"
+  hosts: "main"
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: "Show default discovered facts, when gather_facts is false"
+      ansible.builtin.debug:
+        var: ansible_facts
+
+    - name: "Gather specific facts"
+      ansible.builtin.setup:
+        filter:
+          - "ansible_os_family"
+          - "ansible_distribution"
+          - "ansible_distribution_version"
+
+    - name: "Gather a subset of facts"
+      ansible.builtin.setup:
+        gather_subset: "distribution"
+
+    - name: "Gather all facts"
+      ansible.builtin.setup:
+        gather_timeout: 10
+
+    - name: "Show one discovered fact"
+      ansible.builtin.debug:
+        var: ansible_facts['nodename']
+...

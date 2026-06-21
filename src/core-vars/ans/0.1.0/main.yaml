@@ -1,0 +1,42 @@
+# Reference: https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_variables.html
+---
+- name: "CORE-VARS"
+  hosts: "main"
+  become: false
+  gather_facts: false
+
+  vars:
+    playbook_var: "playbook_var"
+
+  pre_tasks:
+    - name: "Declare var as fact"
+      ansible.builtin.set_fact:
+        fact_var: "fact_var"
+
+  tasks:
+    - block:
+        - name: "Declare var in task"
+          vars:
+            task_var: "task_var"
+          ansible.builtin.debug:
+            var: task_var
+
+        - name: "Can not use var from previous task"
+          ignore_errors: true
+          ansible.builtin.assert:
+            that:
+              - task_var is defined
+              - task_var == "task_var"
+
+    - name: "Use var from fact"
+      ansible.builtin.assert:
+        that:
+          - fact_var is defined
+          - fact_var == "fact_var"
+
+    - name: "Use var from playbook"
+      ansible.builtin.assert:
+        that:
+          - playbook_var is defined
+          - playbook_var == "playbook_var"
+...

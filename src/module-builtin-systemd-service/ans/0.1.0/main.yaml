@@ -1,0 +1,23 @@
+# Reference: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/systemd_service_module.html
+---
+- name: "MODULE-BUILTIN-SYSTEMD-SERVICE"
+  hosts: "main"
+  become: false
+  gather_facts: false
+  check_mode: true
+
+  tasks:
+    - name: "Refresh service"
+      become: true
+      ansible.builtin.systemd_service:
+        scope: system
+        state: "reload"
+        name: "sshd"
+
+    - name: "Disable service"
+      become: true
+      ansible.builtin.systemd_service:
+        scope: system
+        enabled: false
+        name: "sshd"
+...

@@ -1,0 +1,16 @@
+# Reference: https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_loops.html
+---
+- name: "CORE-LOOP"
+  hosts: "main"
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: "Loop List"
+      ansible.builtin.debug:
+        var: "item"
+      loop:
+        - "item_1"
+        - "item_2"
+        - "item_3"
+...

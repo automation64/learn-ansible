@@ -1,23 +1,55 @@
-# Project: IAC64 Ansible Reference
+# learn-ansible
 
-## Overview
+![License](https://img.shields.io/github/license/automation64/learn-ansible)
+![GitHub stars](https://img.shields.io/github/stars/automation64/learn-ansible?style=social)
+![GitHub forks](https://img.shields.io/github/forks/automation64/learn-ansible?style=social)
 
-IAC64 reference for Ansible
+---
 
-## Contributing
+- [learn-ansible](#learn-ansible)
+  - [📌 Overview](#-overview)
+  - [🛠 Contributing](#-contributing)
+  - [⚠️ Disclaimer](#️-disclaimer)
+  - [📜 License](#-license)
+  - [👤 Author](#-author)
 
-Help on implementing new features and maintaining the code base is welcomed.
+---
 
-- [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md)
+## 📌 Overview
 
-## Disclaimer
+Learning material for Ansible:
 
-This repository is provided "as is" without any warranties and is intended solely for educational purposes. The author is not responsible for any damages or issues arising from its use. Additionally, this project is not affiliated with or endorsed by any organization or entity. Use at your own risk.
+- Working examples:
+  - Main features
+  - Core modules
+  - Runtime
 
-## License
+---
 
-[Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)
+## 🛠 Contributing
 
-## Author
+Contributions are welcome! Help us improve by submitting issues, feature requests, or pull requests.
+
+- [Code of Conduct](https://github.com/automation64/learn-ansible/blob/main/CODE_OF_CONDUCT.md)
+
+---
+
+## ⚠️ Disclaimer
+
+This repository is provided "as is" without any warranties. The author is not responsible for any damages or issues arising from its use. Additionally, this project is not affiliated with or endorsed by any organization or entity. Use at your own risk.
+
+---
+
+## 📜 License
+
+**learn-ansible** is licensed under the [Apache-2.0 License](https://www.apache.org/licenses/LICENSE-2.0.txt).
+
+---
+
+## 👤 Author
 
 - [SerDigital64](https://github.com/serdigital64)
+
+---
+
+🌟 **If you find this project useful, consider giving it a star!** ⭐

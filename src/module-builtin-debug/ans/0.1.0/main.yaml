@@ -1,0 +1,21 @@
+# Reference: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/debug_module.html
+---
+- name: "MODULE-BUILTIN-DEBUG"
+  hosts: "main"
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: "Show debuging message"
+      ansible.builtin.debug:
+        msg: "this is from builtin debug module"
+
+    - name: "Show variable content"
+      ansible.builtin.debug:
+        var: ansible_version
+
+    - name: "Show debuging message when ansible verbosity is -vv"
+      ansible.builtin.debug:
+        msg: "verbosity conditional"
+        verbosity: 2  
+...

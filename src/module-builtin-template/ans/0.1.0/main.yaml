@@ -1,0 +1,43 @@
+# Reference: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/template_module.html#ansible-collections-ansible-builtin-template-module
+---
+- name: "MODULE-BUILTIN-TEMPLATE"
+  hosts: "main"
+  become: false
+  gather_facts: false
+
+  pre_tasks:
+    - name: "Prepare test environment"
+      ansible.builtin.tempfile:
+        state: "file"
+        prefix: "learn-ansible"
+        suffix: "builtin-template"
+      register: "tempfile_path"
+
+  tasks:
+    - name: "Create file from text file"
+      ansible.builtin.template:
+        backup: false
+        follow: false
+        force: true
+        unsafe_writes: false
+        mode: "0600"
+        src: "{{ lookup('env', 'DEV_ENV_IAC64_PATH_ETC_GLOBAL') + '/sample_file.txt' }}"
+        dest: "{{ tempfile_path.path }}"
+
+    - name: "Create file from template"
+      ansible.builtin.template:
+        backup: false
+        follow: false
+        force: true
+        unsafe_writes: false
+        mode: "0600"
+        src: "{{ lookup('env', 'DEV_ENV_IAC64_PATH_ETC_GLOBAL') + '/sample_template.j2' }}"
+        dest: "{{ tempfile_path.path }}"
+
+  post_tasks:
+    - name: "Cleanup test environment"
+      ansible.builtin.file:
+        path: "{{ tempfile_path }}"
+        state: "absent"
+      when: tempfile_path is defined
+...
