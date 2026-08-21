@@ -1,0 +1,28 @@
+# Reference: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/service_module.html
+---
+- name: "MODULE-BUILTIN-SERVICE"
+  hosts: "main"
+  become: false
+  gather_facts: false
+  check_mode: true
+
+  tasks:
+    - name: "Refresh service"
+      become: true
+      ansible.builtin.service:
+        state: "reloaded"
+        name: "sshd"
+
+    - name: "Disable service"
+      become: true
+      ansible.builtin.service:
+        enabled: false
+        name: "firewalld"
+
+    - name: "Enable and start service"
+      become: true
+      ansible.builtin.service:
+        enabled: true
+        state: "started"
+        name: "sshd"
+...

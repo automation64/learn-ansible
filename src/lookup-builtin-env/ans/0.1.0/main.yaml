@@ -1,0 +1,12 @@
+---
+# Reference: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/env_lookup.html
+- name: "LOOKUP-BUILTIN-ENV"
+  hosts: "main"
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: "Show environment variable"
+      ansible.builtin.debug:
+        msg: "{{ lookup('ansible.builtin.env', 'DEV_PATH_PROF_TMP') }}"
+...

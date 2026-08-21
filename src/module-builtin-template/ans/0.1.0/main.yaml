@@ -4,6 +4,7 @@
   hosts: "main"
   become: false
   gather_facts: false
+  check_mode: true
 
   pre_tasks:
     - name: "Prepare test environment"
@@ -21,6 +22,8 @@
         force: true
         unsafe_writes: false
         mode: "0600"
+        owner: "root"
+        group: "root"
         src: "{{ lookup('env', 'DEV_ENV_IAC64_PATH_ETC_GLOBAL') + '/sample_file.txt' }}"
         dest: "{{ tempfile_path.path }}"
 

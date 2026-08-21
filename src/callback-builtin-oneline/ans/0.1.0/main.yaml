@@ -1,0 +1,12 @@
+# Reference: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/oneline_callback.html
+---
+- name: "CALLBACK-BUILTIN-MINIMAL"
+  hosts: "main"
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: "Current callback plugin"
+      ansible.builtin.debug:
+        msg: "DEFAULT_STDOUT_CALLBACK={{ lookup('ansible.builtin.config', 'DEFAULT_STDOUT_CALLBACK') }}"
+...
