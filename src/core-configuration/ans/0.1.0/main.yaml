@@ -1,0 +1,12 @@
+---
+# Reference: https://docs.ansible.com/projects/ansible/latest/reference_appendices/config.html
+- name: "CORE-CONFIGURATION"
+  hosts: "main"
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: "Show current configuration source"
+      ansible.builtin.debug:
+        msg: "ANSIBLE_CONFIG={{ lookup('ansible.builtin.env', 'ANSIBLE_CONFIG') }}"
+...

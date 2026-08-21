@@ -10,14 +10,22 @@
     - name: "Refresh service"
       become: true
       ansible.builtin.systemd_service:
-        scope: system
-        state: "reload"
+        scope: "system"
+        state: "reloaded"
         name: "sshd"
 
     - name: "Disable service"
       become: true
       ansible.builtin.systemd_service:
-        scope: system
+        scope: "system"
         enabled: false
+        name: "firewalld"
+
+    - name: "Enable and start service"
+      become: true
+      ansible.builtin.systemd_service:
+        scope: "system"
+        enabled: true
+        state: "started"
         name: "sshd"
 ...

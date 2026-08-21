@@ -1,0 +1,16 @@
+# Reference: https://docs.ansible.com/projects/ansible/latest/collections/ansible/posix/seboolean_module.html
+---
+- name: "MODULE-POSIX-SEBOOLEAN"
+  hosts: "main"
+  become: false
+  gather_facts: false
+  check_mode: true
+
+  tasks:
+    - name: "Enable SELinux boolean, now and persistent"
+      become: true
+      ansible.posix.seboolean:
+        name: "some_selinux_boolean"
+        state: true
+        persistent: true
+...

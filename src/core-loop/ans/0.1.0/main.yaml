@@ -13,4 +13,14 @@
         - "item_1"
         - "item_2"
         - "item_3"
+
+    - name: "Loop Variable"
+      vars:
+        list_of_items:
+          - "item_1"
+          - "item_2"
+          - "item_3"
+      ansible.builtin.debug:
+        var: "item"
+      loop: "{{ list_of_items }}"
 ...

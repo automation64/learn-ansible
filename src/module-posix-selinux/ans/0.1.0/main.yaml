@@ -1,0 +1,14 @@
+# Reference: https://docs.ansible.com/projects/ansible/latest/collections/ansible/posix/selinux_module.html
+---
+- name: "MODULE-POSIX-SELINUX"
+  hosts: "main"
+  become: false
+  gather_facts: false
+  check_mode: true
+
+  tasks:
+    - name: "Set SELinux to permissive"
+      ansible.posix.selinux:
+        policy: "targeted"
+        state: "permissive"
+...
